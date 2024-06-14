@@ -1,20 +1,16 @@
-CREATE DATABASE hh_database;
-
-\c hh_database
-
-CREATE TABLE companies (
+CREATE TABLE IF NOT EXISTS companies (
     id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     url VARCHAR(255),
     description TEXT
 );
 
-CREATE TABLE vacancies (
+CREATE TABLE IF NOT EXISTS vacancies (
     id SERIAL PRIMARY KEY,
-    company_id INTEGER REFERENCES companies(id),
+    company_id INT REFERENCES companies(id),
     name VARCHAR(255) NOT NULL,
-    salary_from INTEGER,
-    salary_to INTEGER,
+    salary_from INT,
+    salary_to INT,
     url VARCHAR(255),
     description TEXT
 );

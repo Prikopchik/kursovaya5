@@ -1,10 +1,10 @@
 import configparser
-from src.functions import get_companies_data, get_vacancies_data, insert_data_to_db
+from src.functions import get_companies_data, get_vacancies_data, insert_data_to_db, create_tables
 from src.DBManager import DBManager
 
 def main():
     config = configparser.ConfigParser()
-    config.read('data/config.ini', encoding='utf-8-sig')
+    config.read('data/config.ini', encoding='utf-8')
 
     db_params = {
         'host': config['postgresql']['host'],
@@ -12,6 +12,8 @@ def main():
         'user': config['postgresql']['user'],
         'password': config['postgresql']['password']
     }
+
+    create_tables(db_params)
 
     company_names = ["Яндекс", "Сбербанк", "Mail.ru Group", "МТС", "Тинькофф",
                      "Газпром", "Лукойл", "Ростелеком", "Альфа-Банк", "Росатом"]
