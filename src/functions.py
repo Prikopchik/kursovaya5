@@ -1,6 +1,6 @@
 import requests
 import psycopg2
-import configparser
+from psycopg2 import sql
 
 def check_and_create_database(db_params, db_name):
     conn = psycopg2.connect(dbname='postgres', user=db_params['user'], password=db_params['password'], host=db_params['host'])
